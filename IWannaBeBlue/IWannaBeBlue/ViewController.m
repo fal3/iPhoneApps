@@ -21,11 +21,14 @@
    }
 
 
-- (IBAction)changeLabelCallerOnTap:(id)sender {
+- (IBAction)changeLabelCallerOnTap:(UIButton *)sender {
     NSLog(@"Tapped");
     self.colorLabel.backgroundColor = [UIColor blueColor];
     self.colorLabel.textColor = [UIColor whiteColor];
     self.colorLabel.text = @"WOO 😛";
+    sender.backgroundColor = [UIColor blackColor];
+    [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
 }
 
 
