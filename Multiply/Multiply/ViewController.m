@@ -27,27 +27,22 @@
 }
 - (IBAction)onCalculateButtonPressed:(UIButton *)sender {
     int numberFromTextField = finalInput.intValue;
-
-
-
-
-
     int numberFromMultiplierLabel = self.multiplierLabel.text.intValue;
     int answer = numberFromTextField * numberFromMultiplierLabel;
     NSString *answerString = [NSString stringWithFormat:@"%i",answer];
+    NSInteger result;
 
-
-    if (answer > 20) {
+    if (result > 20) {
         self.backgroundView.backgroundColor = [UIColor greenColor];
         self.answerLabel.text = answerString;
     }
 
 
-    if (answer%3 == 0 && answer % 5 == 0){
+    if (result % 3 == 0 && result % 5 == 0){
         self.answerLabel.text = @"fizzbuzz";
-    } else if (answer % 5 == 0){
+    } else if (result % 5 == 0){
         self.answerLabel.text = @"buzz";
-    }else if(answer % 3 ==0 ){
+    }else if(result% 3 ==0 ){
         self.answerLabel.text = @"fizz";
     }else{
          self.backgroundView.backgroundColor = [UIColor whiteColor];
@@ -55,16 +50,28 @@
     }
 
 
-    NSInteger result;
-    if (self.operatorSegmentControl.selectedSegmentIndex == 0)
+
+    //for the segmented control operators
+
+    //selectedSegmentIndex at 0 should be the first item in the index
+    //you need to type cast on segment control because the values are float
+    if ((long)self.operatorSegmentControl.selectedSegmentIndex == 0)
     {
+        int numberFromTextField = finalInput.intValue;
         result = numberFromMultiplierLabel * numberFromTextField;
-    } else{
-        result = numberFromMultiplierLabel / numberFromTextField;
+        self.inputLabel.text = finalInput;
+    } else if ((long)self.operatorSegmentControl.selectedSegmentIndex == 1){
+        int numberFromTextField = finalInput.intValue;
+        result = numberFromTextField / numberFromMultiplierLabel ;
+        //int converted to a string
+        self.answerLabel.text = [NSString stringWithFormat:@"%li",(long)result];
+
     }
 
 }
 
+
+//multiplier or second value
 - (IBAction)setMultiplierValue:(UISlider *)sender {
     float multiplierFloat = sender.value;
     int intMultiplier = (int)multiplierFloat;
@@ -74,44 +81,51 @@
 
 
 //append to this string
+//all these methods make the input value for the calculator with a custom keyboard
+
 NSString *finalInput = @"";
 - (IBAction)oneTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"1", finalInput];
+//    finalInput  = [NSString stringWithFormat:@"%@%@", finalInput,@"1"];
+    finalInput = [finalInput stringByAppendingString:@"1"];
     self.inputLabel.text = finalInput;
 }
 - (IBAction)twoTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"2", finalInput];
+    finalInput = [finalInput stringByAppendingString:@"2"];
     self.inputLabel.text = finalInput;
 }
 - (IBAction)threeTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"3", finalInput];    self.inputLabel.text = finalInput;
+    finalInput = [finalInput stringByAppendingString:@"3"];
     self.inputLabel.text = finalInput;
 }
 - (IBAction)fourTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"4", finalInput];
+    finalInput  = [NSString stringWithFormat:@"%@%@",finalInput,@"4"];
     self.inputLabel.text = finalInput;
 }
 - (IBAction)fiveTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"5", finalInput];
+    finalInput  = [NSString stringWithFormat:@"%@%@", finalInput,@"5"];
     self.inputLabel.text = finalInput;
 }
 - (IBAction)sixTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"6", finalInput];
+    finalInput  = [NSString stringWithFormat:@"%@%@", finalInput,@"6"];
     self.inputLabel.text = finalInput;
 }
 - (IBAction)sevenTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"7", finalInput];
+    finalInput  = [NSString stringWithFormat:@"%@%@", finalInput,@"7"];
     self.inputLabel.text = finalInput;
 }
 - (IBAction)eightTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"8", finalInput];    self.inputLabel.text = finalInput;
+    finalInput  = [NSString stringWithFormat:@"%@%@", finalInput,@"8"];    self.inputLabel.text = finalInput;
 }
 - (IBAction)nineTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"9", finalInput];
+    finalInput  = [NSString stringWithFormat:@"%@%@", finalInput,@"9"];
     self.inputLabel.text = finalInput;
 }
 - (IBAction)zeroTapped:(UIButton *)sender {
-    finalInput  = [NSString stringWithFormat:@"%@%@", @"0", finalInput];    self.inputLabel.text = finalInput;
+    finalInput  = [NSString stringWithFormat:@"%@%@", finalInput,@"0"];    self.inputLabel.text = finalInput;
+    self.inputLabel.text = finalInput;
+}
+- (IBAction)clearTapped:(UIButton *)sender {
+    finalInput = @"";
     self.inputLabel.text = finalInput;
 }
 
