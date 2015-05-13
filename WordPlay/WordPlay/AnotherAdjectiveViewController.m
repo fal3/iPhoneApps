@@ -9,6 +9,7 @@
 #import "AnotherAdjectiveViewController.h"
 #import "AnimalViewController.h"
 @interface AnotherAdjectiveViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *anotherAdjectiveTextField;
 
 @end
 
@@ -16,18 +17,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:()sender
+{
+    if (self.anotherAdjectiveTextField.text.length > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
-    ResultsViewController *resultVC = segue.destinationViewController;
-    resultVC.name = self.name;
-    resultVC.adjective = self.adjectiveTextField.text;
+    AnimalViewController *animalVC = segue.destinationViewController;
+    animalVC.name = self.name;
+    animalVC.adjective = self.adjective;
+    animalVC.anotherAdjective = self.anotherAdjectiveTextField.text;
 }
 
 @end

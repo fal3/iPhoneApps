@@ -203,6 +203,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="0N3-jy-kaW"/>
+                    <connections>
+                        <outlet property="anotherAdjectiveTextField" destination="vjX-bW-sfa" id="kSj-lp-rC1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9P-7z-14W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -260,6 +263,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eJd-2o-tOi"/>
+                    <connections>
+                        <outlet property="animalTextField" destination="fvF-Kr-YGW" id="Iky-2z-3aT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tSg-ho-m1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

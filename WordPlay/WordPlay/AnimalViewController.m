@@ -10,6 +10,7 @@
 #import "ResultsViewController.h"
 
 @interface AnimalViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *animalTextField;
 
 @end
 
@@ -20,15 +21,21 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:()sender
+{
+    if (self.animalTextField.text.length > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
     ResultsViewController *resultVC = segue.destinationViewController;
     resultVC.name = self.name;
-    resultVC.adjective = self..text;
+    resultVC.adjective = self.adjective;
+    resultVC.anotherAdjective = self.anotherAdjective;
+    resultVC.animal = self.animalTextField.text;
 }
 
 

@@ -31,9 +31,9 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
-  ResultsViewController *resultVC = segue.destinationViewController;
-    resultVC.name = self.name;
-    resultVC.adjective = self.adjectiveTextField.text;
+  AnotherAdjectiveViewController *anotherVC = segue.destinationViewController;
+    anotherVC.name = self.name;
+    anotherVC.adjective = self.adjectiveTextField.text;
 }
 
 
