@@ -21,43 +21,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//     NSString *textCopy = @"%@ walked into the club with a %@, they thought they were %@ but really they were %@ ";
+  NSDictionary *attributesDictionary = @{NSFontAttributeName : [UIFont boldSystemFontOfSize: 13], NSForegroundColorAttributeName: [UIColor blueColor]};
 
-  NSString *text = [NSString stringWithFormat:@"%@ walked into the club with a %@, they thought they were %@ but really they were %@ ",self.name,self.adjective,self.anotherAdjective,self.animal];
 
-//    for (int i =0; i < textCopy.length;i++){
-//        if ([textCopy containsString:@"%@"]){
-//            NSLog(@"HII");
-//        }
+
+  NSAttributedString *nameAtt = [[NSAttributedString alloc] initWithString:self.name attributes:attributesDictionary];
+  NSAttributedString *paragraph1 = [[NSAttributedString alloc] initWithString:@" bla bla bla "];
+  NSAttributedString *adjectiveAtt = [[NSAttributedString alloc] initWithString:self.adjective attributes:attributesDictionary];
+  NSAttributedString *paragraph2 = [[NSAttributedString alloc] initWithString:@" bla bla bla bla "];
+  NSAttributedString *anotherAtt = [[NSAttributedString alloc] initWithString:self.anotherAdjective attributes:attributesDictionary];
+  NSAttributedString *paragraph3 = [[NSAttributedString alloc] initWithString:@" bla bla bla bla bla "];
+  NSAttributedString *animalAtt = [[NSAttributedString alloc] initWithString:self.animal attributes:attributesDictionary];
+  NSAttributedString *paragraph4 = [[NSAttributedString alloc] initWithString:@" bla bla bla bla bla bla "];
+
+    NSMutableAttributedString *attributeCompleteText = [[NSMutableAttributedString alloc] initWithAttributedString:nameAtt];
+
+    NSArray *sentenceArray = @[nameAtt, paragraph1,adjectiveAtt,paragraph2,anotherAtt,paragraph3,animalAtt,paragraph4];
+//    NSDictionary *vars = @{ self.name : [NSAttributedString *nameAtt]};
+
+    //sentence
+//    NSString *strTextView = [NSString string]
+
+//    NSRange *range = [string rangeOfString:self.variable]
+
+//    NSMutableAttributedString *variable? = [[NSMutableAttributedString alloc] initWithString:string];
+
+    for (int i = 0; i<sentenceArray.count; i++){
+        [attributeCompleteText appendAttributedString:sentenceArray[i]];
+    }
 //
-//        NSArray *controllers = @[self.name,self.adjective,self.anotherAdjective,self.animal];
-//
-//        for (NSString *property in controllers) {
-//            NSLog(@"%@", property);
-//            text = [textCopy stringByReplacingOccurrencesOfString:@"%@" withString:controllers[0]];
-//            NSLog(@"%@",text);
-//
-//        }
-//    for(int i = 0; i < text.length; i++){
-//        if ([text containsString:@"%@",self.name]){
-            NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
-            [attributedText addAttributes:@{NSTextEffectAttributeName : NSTextEffectLetterpressStyle,
-                                            NSForegroundColorAttributeName: [UIColor greenColor],
-                                            NSKernAttributeName: @2.0}
+//  [attributeCompleteText appendAttributedString:paragraph1];
+//  [attributeCompleteText appendAttributedString:adjectiveAtt];
+//  [attributeCompleteText appendAttributedString:paragraph2];
+//  [attributeCompleteText appendAttributedString:anotherAtt];
+//  [attributeCompleteText appendAttributedString:paragraph3];
+//  [attributeCompleteText appendAttributedString:animalAtt];
+//  [attributeCompleteText appendAttributedString:paragraph4];
 
-                                    range:NSMakeRange(0, self.name.length)];
-
-            self.resultsTextView.attributedText = attributedText;
-//        }
-
-
-//    }
-
+  self.resultsTextView.attributedText = attributeCompleteText;
 }
 
 
-
-
-
-
 @end
+
+
+
+
+
+
